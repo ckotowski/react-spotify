@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import userReducer from './userReducer';
 import tokenReducer from './tokenReducer';
 import playlistReducer from './playlistReducer';
@@ -9,7 +8,7 @@ import uiReducer from './uiReducer';
 import browseReducer from './browseReducer';
 import soundReducer from './soundReducer';
 
-export default combineReducers({
+export default {
   userReducer,
   tokenReducer,
   playlistReducer,
@@ -18,5 +17,5 @@ export default combineReducers({
   artistsReducer,
   uiReducer,
   browseReducer,
-  soundReducer
-});
+  soundReducer,
+};
