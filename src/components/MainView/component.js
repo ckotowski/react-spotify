@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import SongList from "../SongList";
-import AlbumList from "../AlbumList";
-import ArtistList from "../ArtistList";
-import BrowseView from "../BrowseView";
-import "./MainView.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import SongList from '../SongList';
+import AlbumList from '../AlbumList';
+import ArtistList from '../ArtistList';
+import BrowseView from '../BrowseView';
+import './MainView.css';
 
 const MainView = ({ headerTitle, audioControl, resumeSong, pauseSong }) => {
   return (
-    <React.Fragment>
-      {headerTitle === "Albums" ? (
+    <div>
+      {headerTitle === 'Albums' ? (
         <AlbumList audioControl={audioControl} />
-      ) : headerTitle === "Artists" ? (
+      ) : headerTitle === 'Artists' ? (
         <ArtistList />
-      ) : headerTitle === "Browse" ? (
+      ) : headerTitle === 'Browse' ? (
         <BrowseView />
       ) : (
         //anything else show SongList
@@ -23,7 +23,7 @@ const MainView = ({ headerTitle, audioControl, resumeSong, pauseSong }) => {
           audioControl={audioControl}
         />
       )}
-    </React.Fragment>
+    </div>
   );
 };
 
@@ -31,7 +31,7 @@ MainView.propTypes = {
   headerTitle: PropTypes.string,
   audioControl: PropTypes.func,
   resumeSong: PropTypes.func,
-  pauseSong: PropTypes.func
+  pauseSong: PropTypes.func,
 };
 
 export default MainView;
