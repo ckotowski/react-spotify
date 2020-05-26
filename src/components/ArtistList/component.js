@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./ArtistList.css";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchArtistSongs } from '../../actions/artistActions';
+import { updateHeaderTitle } from '../../actions/uiActions';
+import './ArtistList.css';
 
-const ArtistList = ({
-  artists,
-  fetchArtistSongs,
-  token,
-  updateHeaderTitle
-}) => {
+const ArtistList = () => {
+  const token = useSelector((state) => state.tokenReducer.token);
+  const artists = useSelector((state) => state.artistsReducer.artists);
+  const dispatch = useDispatch();
+
   const renderArtists = () => {
     return artists.map((artist, i) => {
       const artistSongsAction = (artist, token) => {
-        fetchArtistSongs(artist.id, token);
-        updateHeaderTitle(artist.name);
+        dispatch(fetchArtistSongs(artist.id, token));
+        dispatch(updateHeaderTitle(artist.name));
       };
 
       return (
@@ -26,7 +27,10 @@ const ArtistList = ({
           <a>
             <div>
               <div className="artist-image">
-                <img alt="artist" src={artist.images[0] ? artist.images[0].url : ""} />
+                <img
+                  alt="artist"
+                  src={artist.images[0] ? artist.images[0].url : ''}
+                />
               </div>
               <div className="artist-details">
                 <p>{artist.name}</p>
@@ -41,13 +45,6 @@ const ArtistList = ({
   return (
     <ul className="artist-view-container">{artists && renderArtists()}</ul>
   );
-};
-
-ArtistList.propTypes = {
-  artists: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  fetchArtistSongs: PropTypes.func,
-  token: PropTypes.string,
-  updateHeaderTitle: PropTypes.func
 };
 
 export default ArtistList;
