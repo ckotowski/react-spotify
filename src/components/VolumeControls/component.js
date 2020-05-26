@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateVolume } from '../../actions/soundActions';
 import './VolumeControls.css';
 
-const VolumeControls = (props) => {
-  const [volume, setVolume] = useState(props.volume);
-  useEffect(() => {
-    console.log('volume', volume);
-  });
+const VolumeControls = () => {
+  const volume = useSelector((state) => state.soundReducer.volume);
+  const dispatch = useDispatch();
 
-  const updateVolume = (e) => {
-    setVolume(e.target.value);
-    props.updateVolume(Math.ceil(e.target.value / 10) * 10);
+  const onVolumeChange = (e) => {
+    dispatch(updateVolume(Math.ceil(e.target.value / 10) * 10));
   };
 
   return (
@@ -22,15 +20,10 @@ const VolumeControls = (props) => {
         min={0}
         max={100}
         value={volume}
-        onChange={updateVolume}
+        onChange={onVolumeChange}
       />
     </div>
   );
-};
-
-VolumeControls.propTypes = {
-  volume: PropTypes.number,
-  updateVolume: PropTypes.func,
 };
 
 export default VolumeControls;
