@@ -1,32 +1,45 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./UserPlaylists.css";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchPlaylistsMenu,
+  fetchPlaylistSongs,
+} from '../../actions/playlistActions';
+import { updateHeaderTitle } from '../../actions/uiActions';
+import './UserPlaylists.css';
 
-class UserPlaylists extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.userId !== "" && nextProps.token !== "") {
-      this.props.fetchPlaylistsMenu(nextProps.userId, nextProps.token);
+const UserPlaylists = (props) => {
+  const userId = useSelector((state) =>
+    state.userReducer.user ? state.userReducer.user.id : ''
+  );
+  const playlistMenu = useSelector(
+    (state) => state.playlistReducer.playlistMenu
+  );
+  const token = useSelector((state) =>
+    state.tokenReducer.token ? state.tokenReducer.token : ''
+  );
+  const title = useSelector((state) => state.uiReducer.title);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userId !== '' && token !== '') {
+      dispatch(fetchPlaylistsMenu(userId, token));
     }
-  }
+  }, [userId]);
 
-  renderPlaylists() {
-    return this.props.playlistMenu.map(playlist => {
+  console.log(playlistMenu);
+
+  const renderPlaylists = () => {
+    return playlistMenu.map((playlist) => {
       const getPlaylistSongs = () => {
-        this.props.fetchPlaylistSongs(
-          playlist.owner.id,
-          playlist.id,
-          this.props.token
-        );
-        this.props.updateHeaderTitle(playlist.name);
+        dispatch(fetchPlaylistSongs(playlist.owner.id, playlist.id, token));
+        dispatch(updateHeaderTitle(playlist.name));
       };
 
       return (
         <li
           onClick={getPlaylistSongs}
           className={
-            this.props.title === playlist.name
-              ? "active side-menu-item"
-              : "side-menu-item"
+            title === playlist.name ? 'active side-menu-item' : 'side-menu-item'
           }
           key={playlist.id}
         >
@@ -34,26 +47,14 @@ class UserPlaylists extends Component {
         </li>
       );
     });
-  }
+  };
 
-  render() {
-    return (
-      <div className="user-playlist-container">
-        <h3 className="user-playlist-header">Playlists</h3>
-        {this.props.playlistMenu && this.renderPlaylists()}
-      </div>
-    );
-  }
-}
-
-UserPlaylists.propTypes = {
-  userId: PropTypes.string,
-  token: PropTypes.string,
-  title: PropTypes.string,
-  playlistMenu: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  fetchPlaylistsMenu: PropTypes.func,
-  fetchPlaylistSongs: PropTypes.func,
-  updateHeaderTitle: PropTypes.func
+  return (
+    <div className="user-playlist-container">
+      <h3 className="user-playlist-header">Playlists</h3>
+      {playlistMenu && renderPlaylists()}
+    </div>
+  );
 };
 
 export default UserPlaylists;
