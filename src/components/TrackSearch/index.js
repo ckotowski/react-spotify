@@ -1,21 +1,3 @@
-import TrackSearch from "./component";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { searchSongs } from '../../actions/songActions';
+import TrackSearch from './component';
 
-const mapStateToProps = (state) => {
-
-  return {
-    token: state.tokenReducer.token
-  };
-
-};
-
-const mapDispatchToProps = (dispatch) => {
-
-  return bindActionCreators({
-    searchSongs,
-  }, dispatch);
-
-};
-export default connect(mapStateToProps, mapDispatchToProps)(TrackSearch);
+export default TrackSearch;

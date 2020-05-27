@@ -1,48 +1,40 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./TrackSearch.css";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchSongs } from '../../actions/songActions';
+import './TrackSearch.css';
 
-class TrackSearch extends Component {
-  state = {
-    searchTerm: ""
+const TrackSearch = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const token = useSelector((state) => state.tokenReducer.token);
+  const dispatch = useDispatch();
+
+  const updateSearchTerm = (e) => {
+    setSearchTerm(e.target.value);
   };
 
-  updateSearchTerm = e => {
-    this.setState({
-      searchTerm: e.target.value
-    });
-  };
-
-  render() {
-    return (
-      <div className="track-search-container">
-        <form
-          onSubmit={() => {
-            this.props.searchSongs(this.state.searchTerm, this.props.token);
+  return (
+    <div className="track-search-container">
+      <form
+        onSubmit={() => {
+          dispatch(searchSongs(searchTerm, token));
+        }}
+      >
+        <input
+          onChange={updateSearchTerm}
+          type="text"
+          placeholder="Search..."
+        />
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(searchSongs(searchTerm, token));
           }}
         >
-          <input
-            onChange={this.updateSearchTerm}
-            type="text"
-            placeholder="Search..."
-          />
-          <button
-            onClick={e => {
-              e.preventDefault();
-              this.props.searchSongs(this.state.searchTerm, this.props.token);
-            }}
-          >
-            <i className="fa fa-search search" aria-hidden="true" />
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
-
-TrackSearch.propTypes = {
-  searchSongs: PropTypes.func,
-  token: PropTypes.string
+          <i className="fa fa-search search" aria-hidden="true" />
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default TrackSearch;
