@@ -4,7 +4,7 @@ import {
   fetchPlaylistsMenu,
   fetchPlaylistSongs,
 } from '../../actions/playlistActions';
-import { updateHeaderTitle } from '../../actions/uiActions';
+import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './UserPlaylists.css';
 
 const UserPlaylists = (props) => {
@@ -17,7 +17,7 @@ const UserPlaylists = (props) => {
   const token = useSelector((state) =>
     state.tokenReducer.token ? state.tokenReducer.token : ''
   );
-  const title = useSelector((state) => state.uiReducer.title);
+  const title = useSelector((state) => state.title);
   const dispatch = useDispatch();
 
   useEffect(() => {

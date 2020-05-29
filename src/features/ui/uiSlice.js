@@ -1,0 +1,19 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  title: 'FooBar',
+};
+
+const uiSlice = createSlice({
+  name: 'ui',
+  initialState,
+  reducers: {
+    updateHeaderTitle(state, action) {
+      console.log('uiSlice', action);
+      state.title = action.payload;
+    },
+  },
+});
+
+export const { updateHeaderTitle } = uiSlice.actions;
+export default uiSlice.reducer;

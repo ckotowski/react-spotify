@@ -4,7 +4,7 @@ import playlistReducer from './playlistReducer';
 import songsReducer from './songsReducer';
 import albumsReducer from './albumsReducer';
 import artistsReducer from './artistsReducer';
-import uiReducer from './uiReducer';
+//import uiReducer from './uiReducer';
 import browseReducer from './browseReducer';
 import soundReducer from './soundReducer';
 
@@ -15,7 +15,7 @@ export default {
   songsReducer,
   albumsReducer,
   artistsReducer,
-  uiReducer,
+  //uiReducer,
   browseReducer,
   soundReducer,
 };

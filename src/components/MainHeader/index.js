@@ -1,35 +1,35 @@
-import MainHeader from "./component";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import MainHeader from './component';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   fetchCategories,
   fetchNewReleases,
-  fetchFeatured
-} from "../../actions/browseActions";
-import { updateHeaderTitle } from "../../actions/uiActions";
-import { updateViewType } from "../../actions/songActions";
+  fetchFeatured,
+} from '../../actions/browseActions';
+import { updateHeaderTitle } from '../../features/ui/uiSlice';
+import { updateViewType } from '../../actions/songActions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     songPaused: state.songsReducer.songPaused,
-    headerTitle: state.uiReducer.title,
+    headerTitle: state.ui.title,
     viewType: state.songsReducer.viewType,
     playlists: state.playlistReducer.playlists,
     artists: state.artistsReducer.artistList
       ? state.artistsReducer.artistList.artists
       : [],
-    token: state.tokenReducer.token
+    token: state.tokenReducer.token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       fetchCategories,
       fetchNewReleases,
       updateHeaderTitle,
       updateViewType,
-      fetchFeatured
+      fetchFeatured,
     },
     dispatch
   );

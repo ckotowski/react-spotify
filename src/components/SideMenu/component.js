@@ -8,13 +8,13 @@ import {
 import { fetchAlbums } from '../../actions/albumActions';
 import { fetchArtists } from '../../actions/artistActions';
 import { fetchFeatured } from '../../actions/browseActions';
-import { updateHeaderTitle } from '../../actions/uiActions';
+import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './SideMenu.css';
 
 const SideMenu = () => {
   const token = useSelector((state) => state.tokenReducer.token);
   const artistIds = useSelector((state) => state.artistsReducer.artistIds);
-  const title = useSelector((state) => state.uiReducer.title);
+  const { title } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
   const handleClick = (name) => {
