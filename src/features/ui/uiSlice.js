@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  title: 'FooBar',
+  title: 'Songs',
 };
 
 const uiSlice = createSlice({
