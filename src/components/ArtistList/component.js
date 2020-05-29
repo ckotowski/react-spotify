@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchArtistSongs } from '../../actions/artistActions';
-import { updateHeaderTitle } from '../../actions/uiActions';
+import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './ArtistList.css';
 
 const ArtistList = () => {
