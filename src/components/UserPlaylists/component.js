@@ -9,7 +9,7 @@ import './UserPlaylists.css';
 
 const UserPlaylists = (props) => {
   const userId = useSelector((state) =>
-    state.userReducer.user ? state.userReducer.user.id : ''
+    state.user.user ? state.user.user.id : ''
   );
   const playlistMenu = useSelector(
     (state) => state.playlistReducer.playlistMenu

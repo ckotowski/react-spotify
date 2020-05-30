@@ -4,11 +4,11 @@ import './UserDetails.css';
 
 const UserDetails = () => {
   const displayName = useSelector((state) =>
-    state.userReducer.user ? state.userReducer.user.display_name : ''
+    state.user.user ? state.user.user.display_name : ''
   );
   const userImage = useSelector((state) =>
-    state.userReducer.user && state.userReducer.user.images[0]
-      ? state.userReducer.user.images[0].url
+    state.user.user && state.user.user.images[0]
+      ? state.user.user.images[0].url
       : ''
   );
 

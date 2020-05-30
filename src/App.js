@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchUser } from './actions/userActions';
+import { fetchUser } from './features/user/userSlice';
 import {
   playSong,
   stopSong,

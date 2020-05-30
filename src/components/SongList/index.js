@@ -2,7 +2,7 @@ import SongList from './component';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSongs } from '../../actions/songActions';
-import { addSongToLibrary } from '../../actions/userActions';
+import { addSongToLibrary } from '../../features/user/userSlice';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
     songPlaying: state.songsReducer.songPlaying,
     songPaused: state.songsReducer.songPaused,
     songId: state.songsReducer.songId,
-    songAddedId: state.userReducer.songId || '',
+    songAddedId: state.user.songId || '',
     viewType: state.songsReducer.viewType,
   };
 };

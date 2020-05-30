@@ -6,6 +6,7 @@ import reducer from './reducers';
 import sound from './features/sound/soundSlice';
 import token from './features/token/tokenSlice';
 import ui from './features/ui/uiSlice';
+import user from './features/user/userSlice';
 import App from './App';
 
 //create the redux store
@@ -15,6 +16,7 @@ const store = configureStore({
     sound,
     token,
     ui,
+    user,
   },
 });
 
