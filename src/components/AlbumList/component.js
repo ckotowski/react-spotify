@@ -1,8 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./AlbumList.css";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import uniqBy from 'lodash/uniqBy';
+import PropTypes from 'prop-types';
+import './AlbumList.css';
 
-const AlbumList = ({ songs, audioControl }) => {
+const AlbumList = ({ audioControl }) => {
+  const songs = useSelector((state) =>
+    state.songsReducer.songs
+      ? uniqBy(state.songsReducer.songs, (item) => item.track.album.name)
+      : ''
+  );
+
   const renderAlbums = () => {
     return songs.map((song, i) => {
       return (
@@ -38,8 +46,7 @@ const AlbumList = ({ songs, audioControl }) => {
 };
 
 AlbumList.propTypes = {
-  songs: PropTypes.array,
-  audioControl: PropTypes.func
+  audioControl: PropTypes.func,
 };
 
 export default AlbumList;
