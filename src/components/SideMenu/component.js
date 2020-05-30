@@ -5,7 +5,7 @@ import {
   fetchRecentlyPlayed,
   updateViewType,
 } from '../../actions/songActions';
-import { fetchAlbums } from '../../actions/albumActions';
+import { fetchAlbums } from '../../features/album/albumSlice';
 import { fetchArtists } from '../../actions/artistActions';
 import { fetchFeatured } from '../../actions/browseActions';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';

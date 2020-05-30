@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   return {
     view: state.browseReducer.view,
     viewType: state.songsReducer.viewType,
-    token: state.tokenReducer.token,
+    token: state.token.token,
   };
 };
 

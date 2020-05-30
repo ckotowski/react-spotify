@@ -5,7 +5,7 @@ import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './ArtistList.css';
 
 const ArtistList = () => {
-  const token = useSelector((state) => state.tokenReducer.token);
+  const token = useSelector((state) => state.token.token);
   const artists = useSelector((state) => state.artistsReducer.artists);
   const dispatch = useDispatch();
 
