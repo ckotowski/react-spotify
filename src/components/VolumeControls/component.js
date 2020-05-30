@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateVolume } from '../../actions/soundActions';
+import { updateVolume } from '../../features/sound/soundSlice';
 import './VolumeControls.css';
 
 const VolumeControls = () => {
-  const volume = useSelector((state) => state.soundReducer.volume);
+  const volume = useSelector((state) => state.sound.volume);
   const dispatch = useDispatch();
 
   const onVolumeChange = (e) => {

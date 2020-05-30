@@ -62,16 +62,14 @@ const App = (props) => {
   };
 
   const audioControl = (song) => {
-    const { playSong, stopSong } = props;
-
     if (myAudio === undefined) {
-      playSong(song.track);
+      dispatch(playSong(song.track));
       myAudio = new Audio(song.track.preview_url);
       myAudio.play();
     } else {
       stopSong();
       myAudio.pause();
-      playSong(song.track);
+      dispatch(playSong(song.track));
       myAudio = new Audio(song.track.preview_url);
       myAudio.play();
     }
@@ -108,17 +106,12 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  fetchUser: PropTypes.func,
-  pauseSong: PropTypes.func,
-  playSong: PropTypes.func,
-  stopSong: PropTypes.func,
-  resumeSong: PropTypes.func,
   volume: PropTypes.number,
 };
 
 const mapStateToProps = (state) => {
   return {
-    volume: state.soundReducer.volume,
+    volume: state.sound.volume,
   };
 };
 
@@ -126,7 +119,6 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       fetchUser,
-      playSong,
       stopSong,
       pauseSong,
       resumeSong,
