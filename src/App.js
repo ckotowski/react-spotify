@@ -41,11 +41,11 @@ const App = (props) => {
       dispatch(setToken(hashParams.access_token));
       dispatch(fetchUser(hashParams.access_token));
     }
-
-    if (myAudio !== undefined) {
-      myAudio.volume = props.volume / 100;
-    }
   }, []);
+
+  if (myAudio !== undefined) {
+    myAudio.volume = props.volume / 100;
+  }
 
   const pauseSong = () => {
     if (myAudio) {
