@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import SongList from '../SongList';
 import AlbumList from '../AlbumList';
@@ -6,7 +7,8 @@ import ArtistList from '../ArtistList';
 import BrowseView from '../BrowseView';
 import './MainView.css';
 
-const MainView = ({ headerTitle, audioControl, resumeSong, pauseSong }) => {
+const MainView = ({ audioControl, resumeSong, pauseSong }) => {
+  const headerTitle = useSelector((state) => state.ui.title);
   return (
     <div>
       {headerTitle === 'Albums' ? (
@@ -28,7 +30,6 @@ const MainView = ({ headerTitle, audioControl, resumeSong, pauseSong }) => {
 };
 
 MainView.propTypes = {
-  headerTitle: PropTypes.string,
   audioControl: PropTypes.func,
   resumeSong: PropTypes.func,
   pauseSong: PropTypes.func,
