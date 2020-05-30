@@ -20,7 +20,7 @@ const MainHeader = ({ pauseSong, resumeSong }) => {
       ? state.artistsReducer.artistList.artists
       : []
   );
-  const token = useSelector((state) => state.tokenReducer.token);
+  const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
 
   let currentPlaylist;

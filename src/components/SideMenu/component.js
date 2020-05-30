@@ -12,7 +12,7 @@ import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './SideMenu.css';
 
 const SideMenu = () => {
-  const token = useSelector((state) => state.tokenReducer.token);
+  const token = useSelector((state) => state.token.token);
   const artistIds = useSelector((state) => state.artistsReducer.artistIds);
   const { title } = useSelector((state) => state.ui);
   const dispatch = useDispatch();

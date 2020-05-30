@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
+import token from './features/token/tokenSlice';
 import ui from './features/ui/uiSlice';
 import App from './App';
 
@@ -11,6 +12,7 @@ const store = configureStore({
   reducer: {
     ...reducer,
     ui,
+    token,
   },
 });
 

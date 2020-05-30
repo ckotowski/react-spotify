@@ -1,5 +1,5 @@
 import userReducer from './userReducer';
-import tokenReducer from './tokenReducer';
+//import tokenReducer from './tokenReducer';
 import playlistReducer from './playlistReducer';
 import songsReducer from './songsReducer';
 import albumsReducer from './albumsReducer';
@@ -10,7 +10,7 @@ import soundReducer from './soundReducer';
 
 export default {
   userReducer,
-  tokenReducer,
+  //tokenReducer,
   playlistReducer,
   songsReducer,
   albumsReducer,

@@ -15,7 +15,7 @@ const UserPlaylists = (props) => {
     (state) => state.playlistReducer.playlistMenu
   );
   const token = useSelector((state) =>
-    state.tokenReducer.token ? state.tokenReducer.token : ''
+    state.token.token ? state.token.token : ''
   );
   const title = useSelector((state) => state.title);
   const dispatch = useDispatch();

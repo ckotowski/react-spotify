@@ -5,7 +5,7 @@ import './TrackSearch.css';
 
 const TrackSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const token = useSelector((state) => state.tokenReducer.token);
+  const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
 
   const updateSearchTerm = (e) => {

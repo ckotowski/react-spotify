@@ -9,7 +9,6 @@ const uiSlice = createSlice({
   initialState,
   reducers: {
     updateHeaderTitle(state, action) {
-      console.log('uiSlice', action);
       state.title = action.payload;
     },
   },
