@@ -6,14 +6,14 @@ import {
   updateViewType,
 } from '../../actions/songActions';
 import { fetchAlbums } from '../../features/album/albumSlice';
-import { fetchArtists } from '../../actions/artistActions';
+import { fetchArtists } from '../../features/artists/artistSlice';
 import { fetchFeatured } from '../../actions/browseActions';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './SideMenu.css';
 
 const SideMenu = () => {
   const token = useSelector((state) => state.token.token);
-  const artistIds = useSelector((state) => state.artistsReducer.artistIds);
+  const { artistIds } = useSelector((state) => state.artists);
   const { title } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
 
@@ -57,8 +57,9 @@ const SideMenu = () => {
             title === item.name ? 'active side-menu-item' : 'side-menu-item'
           }
           onClick={() => {
+            console.log(item);
             item.getArtists
-              ? item.action(token, artistIds)
+              ? dispatch(item.action(token, artistIds))
               : item.action(token);
             handleClick(item.name);
           }}

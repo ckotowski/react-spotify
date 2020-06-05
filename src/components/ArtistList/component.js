@@ -1,15 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchArtistSongs } from '../../actions/artistActions';
+import { fetchArtistSongs } from '../../features/artists/artistSlice';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './ArtistList.css';
 
 const ArtistList = () => {
-  const token = useSelector((state) => state.token.token);
-  const artists = useSelector((state) => state.artistsReducer.artists);
+  const { token } = useSelector((state) => state.token);
+  const { artists } = useSelector((state) => state.artists);
   const dispatch = useDispatch();
 
   const renderArtists = () => {
+    console.log('artists', artists);
     return artists.map((artist, i) => {
       const artistSongsAction = (artist, token) => {
         dispatch(fetchArtistSongs(artist.id, token));
@@ -19,6 +20,7 @@ const ArtistList = () => {
       return (
         <li
           onClick={() => {
+            console.log('Get songs for artist', artist, token);
             artistSongsAction(artist, token);
           }}
           className="artist-item"
