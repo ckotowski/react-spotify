@@ -7,7 +7,7 @@ import {
 } from '../../actions/songActions';
 import { fetchAlbums } from '../../features/album/albumSlice';
 import { fetchArtists } from '../../features/artists/artistSlice';
-import { fetchFeatured } from '../../actions/browseActions';
+import { fetchFeatured } from '../../features/browse/browseSlice';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './SideMenu.css';
 

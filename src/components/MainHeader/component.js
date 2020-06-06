@@ -4,7 +4,7 @@ import {
   fetchCategories,
   fetchNewReleases,
   fetchFeatured,
-} from '../../actions/browseActions';
+} from '../../features/browse/browseSlice';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import { updateViewType } from '../../actions/songActions';
 import PropTypes from 'prop-types';
