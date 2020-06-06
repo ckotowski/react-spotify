@@ -14,7 +14,6 @@ const BrowseView = () => {
   const dispatch = useDispatch();
 
   let browseView;
-  console.log('view', view);
 
   if (view) {
     browseView = view.map((item, i) => {
