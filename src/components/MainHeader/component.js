@@ -14,7 +14,7 @@ const MainHeader = ({ pauseSong, resumeSong }) => {
   const songPaused = useSelector((state) => state.songsReducer.songPaused);
   const headerTitle = useSelector((state) => state.ui.title);
   const viewType = useSelector((state) => state.songsReducer.viewType);
-  const playlists = useSelector((state) => state.playlistReducer.playlists);
+  const { playlists } = useSelector((state) => state.playlist);
   const artists = useSelector((state) =>
     state.artistList ? state.artistList.artists : []
   );

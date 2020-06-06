@@ -90,7 +90,7 @@ export const songsReducer = (state = defaultState, action) => {
     case 'FETCH_PLAYLIST_SONGS_SUCCESS':
       return {
         ...state,
-        songs: action.songs,
+        songs: action.payload,
         viewType: 'playlist',
         fetchPlaylistSongsError: false,
         fetchPlaylistSongsPending: false,

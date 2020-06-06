@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPlaylistSongs,
   addPlaylistItem,
-} from '../../actions/playlistActions';
+} from '../../features/playlist/playlistSlice';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './BrowseView.css';
 

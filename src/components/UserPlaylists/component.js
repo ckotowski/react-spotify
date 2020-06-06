@@ -3,20 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPlaylistsMenu,
   fetchPlaylistSongs,
-} from '../../actions/playlistActions';
+} from '../../features/playlist/playlistSlice';
 import { updateHeaderTitle } from '../../features/ui/uiSlice';
 import './UserPlaylists.css';
 
-const UserPlaylists = (props) => {
+const UserPlaylists = () => {
   const userId = useSelector((state) =>
     state.user.user ? state.user.user.id : ''
   );
-  const playlistMenu = useSelector(
-    (state) => state.playlistReducer.playlistMenu
-  );
-  const token = useSelector((state) =>
-    state.token.token ? state.token.token : ''
-  );
+  const { playlistMenu } = useSelector((state) => state.playlist);
+  const { token } = useSelector((state) => state.token);
   const title = useSelector((state) => state.title);
   const dispatch = useDispatch();
 
@@ -25,8 +21,6 @@ const UserPlaylists = (props) => {
       dispatch(fetchPlaylistsMenu(userId, token));
     }
   }, [userId]);
-
-  console.log(playlistMenu);
 
   const renderPlaylists = () => {
     return playlistMenu.map((playlist) => {
