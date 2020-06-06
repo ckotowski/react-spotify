@@ -100,7 +100,6 @@ export const fetchPlaylistSongs = (userId, playlistId, accessToken) => {
         res.items = uniqBy(res.items, (item) => {
           return item.track.id;
         });
-        console.log('!!! Got playlist songs', res.items);
         dispatch(fetchPlaylistSongsSuccess(res.items));
       })
       .catch((err) => {
